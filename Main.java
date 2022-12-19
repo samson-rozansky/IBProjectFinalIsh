@@ -79,15 +79,20 @@ public class Main extends SuperMain{
         TheNotes.delete();
         FileWriter myWriter = new FileWriter("notes.txt",true);
         for(Notes i : NoteList){
+            int hour = Integer.parseInt(i.getTime().toString().substring(0, 2));
+            int minute = Integer.parseInt(i.getTime().toString().substring(3, 5));
+            int second = Integer.parseInt(i.getTime().toString().substring(6, 8));
             if(importantOnly){
                 if(i.getImportance()){
                     myWriter.write(i.getText()+"\n");
                     System.out.println(i.getText());
+                    System.out.printf("Hour: %-2d  Minute: %-2d  Second: %-2d%n",hour,minute,second);
                 }
             }
             else{
                 myWriter.write(i.getText()+"\n");
                 System.out.println(i.getText());
+                System.out.printf("Hour: %-2d  Minute: %-2d  Second: %-2d%n",hour,minute,second);
             }
             
         }
